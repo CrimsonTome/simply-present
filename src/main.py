@@ -10,14 +10,14 @@ SIMPLY_PLURAL_BASE_URL = "https://api.apparyllis.com/v1"
 # Load secrets from file, this includes your Simply PLugin API key
 secretsPath = Path("secrets.json")
 with secretsPath.open(encoding="utf-8") as file:
-    secrets = json.load(file)
+    secrets: dict[str, str] = json.load(file)
 
 
 def get_data() -> tuple[str, str]:
     """This function gets the fronter data from Simply Plural. \n
     Assume everything here breaks if there are multiple fronters"""
     payload: dict = {}
-    headers: dict[str, any] = {"Authorization": secrets["SimplyPluralAPIKey"]}
+    headers: dict[str, str] = {"Authorization": secrets["SimplyPluralAPIKey"]}
 
     response = requests.request(
         "GET",
@@ -58,7 +58,7 @@ def get_data() -> tuple[str, str]:
 RPC = Presence("1324497000779218944")
 RPC.connect()
 
-start_time:float = time.time()
+start_time: float = time.time()
 
 while True:  # The presence will stay on as long as the program is running
     fronter, avatarURL = get_data()
@@ -69,7 +69,7 @@ while True:  # The presence will stay on as long as the program is running
             details=fronter,
             large_image=avatarURL,
             large_text=fronter,
-            start=start_time,
+            start=int(start_time),
         )
     )  # Set the presence
     time.sleep(15)  # Can only update rich presence every 15 seconds
