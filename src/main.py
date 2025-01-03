@@ -8,7 +8,7 @@ import time
 
 SIMPLY_PLURAL_BASE_URL = "https://api.apparyllis.com/v1"
 
-# Load secrets from file, this includes the DiscordAppID and your Simply PLugin API key
+# Load secrets from file, this includes your Simply PLugin API key
 secretsPath = Path('secrets.json')
 with secretsPath.open() as file:
     secrets = json.load(file)
@@ -41,12 +41,11 @@ def getData():
 
     avatarURL = ''.join(data['content']['avatarUrl'])
     # print(avatarURL)
-    
+
     return name, avatarURL
 
 # Start the RPC connection
-CLIENT_ID = secrets['DiscordAppID']
-RPC = Presence(CLIENT_ID)  # Initialize the client class
+RPC = Presence("1324497000779218944")  # Initialize the client class. App ID is fine to be public, it's not a secret
 RPC.connect() # Start the RPC connection
 startTime=time.time()
 
