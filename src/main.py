@@ -12,13 +12,12 @@ secretsPath = Path("secrets.json")
 with secretsPath.open(encoding="utf-8") as file:
     secrets = json.load(file)
 
-# Assume everything here breaks if there are multiple fronters
 
-
-def get_data():
-    """This function gets the fronter data from Simply Plural."""
-    payload = {}
-    headers = {"Authorization": secrets["SimplyPluralAPIKey"]}
+def get_data() -> tuple[str, str]:
+    """This function gets the fronter data from Simply Plural. \n
+    Assume everything here breaks if there are multiple fronters"""
+    payload: dict = {}
+    headers: dict[str, any] = {"Authorization": secrets["SimplyPluralAPIKey"]}
 
     response = requests.request(
         "GET",
@@ -27,16 +26,14 @@ def get_data():
         data=payload,
         timeout=10,
     )
-    response_content = response.text
+    response_content: str = response.text
     data = json.loads(response_content)
     # Get current fronters, this probably breaks if there are multiple fronters
     # Stripping out anything that isn't a member ID such as [] and ''
     fronters = "".join([item["content"]["member"] for item in data])
-    # print(members)
 
     # Get uid (system ID)
     uid = "".join([item["content"]["uid"] for item in data])
-    # print(uid)
 
     # Get the name of the fronter using the uid and member id
     # This 100% breaks if there are multiple fronters
@@ -47,11 +44,11 @@ def get_data():
         data=payload,
         timeout=10,
     )
-    response_content = response.text
+    response_content: str = response.text
     data = json.loads(response_content)
-    name = "".join(data["content"]["name"])
+    name: str = "".join(data["content"]["name"])
 
-    avatar_url = "".join(data["content"]["avatarUrl"])
+    avatar_url: str = "".join(data["content"]["avatarUrl"])
 
     return name, avatar_url
 
@@ -61,7 +58,7 @@ def get_data():
 RPC = Presence("1324497000779218944")
 RPC.connect()
 
-start_time = time.time()
+start_time:float = time.time()
 
 while True:  # The presence will stay on as long as the program is running
     fronter, avatarURL = get_data()
