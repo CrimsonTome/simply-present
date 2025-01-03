@@ -71,5 +71,5 @@ while True:  # The presence will stay on as long as the program is running
             large_text=fronter,
             start=int(start_time),
         )
-    )  # Set the presence
+    )
     time.sleep(15)  # Can only update rich presence every 15 seconds
