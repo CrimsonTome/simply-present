@@ -63,13 +63,22 @@ start_time: float = time.time()
 while True:  # The presence will stay on as long as the program is running
     fronter, avatarURL = get_data()
     # Set the presence and output to console
-    print(
-        RPC.update(
-            state="(from Simply Plural)",
-            details=fronter,
-            large_image=avatarURL,
-            large_text=fronter,
-            start=int(start_time),
+    if avatarURL:
+        print(
+            RPC.update(
+                state="(from Simply Plural)",
+                details=fronter,
+                large_image=avatarURL,
+                large_text=fronter,
+                start=int(start_time),
+            )
         )
-    )
+    else:
+        print(
+            RPC.update(
+                state="(from Simply Plural)",
+                details=fronter,
+                start=int(start_time),
+            )
+        )
     time.sleep(15)  # Can only update rich presence every 15 seconds
