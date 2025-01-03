@@ -50,10 +50,8 @@ def get_data():
     response_content = response.text
     data = json.loads(response_content)
     name = "".join(data["content"]["name"])
-    # print(name)
 
     avatar_url = "".join(data["content"]["avatarUrl"])
-    # print(avatarURL)
 
     return name, avatar_url
 
@@ -63,18 +61,18 @@ def get_data():
 RPC = Presence("1324497000779218944")
 RPC.connect()
 
-startTime = time.time()
+start_time = time.time()
 
 while True:  # The presence will stay on as long as the program is running
     fronter, avatarURL = get_data()
-    # Set the presence
+    # Set the presence and output to console
     print(
         RPC.update(
             state="(from Simply Plural)",
             details=fronter,
             large_image=avatarURL,
             large_text=fronter,
-            start=startTime,
+            start=start_time,
         )
     )  # Set the presence
     time.sleep(15)  # Can only update rich presence every 15 seconds
