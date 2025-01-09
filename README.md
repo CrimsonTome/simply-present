@@ -39,6 +39,11 @@ Once you have the dependencies installed and/or have made your changes you can r
 
 It is recommended to run your changes through a linter such as pylint. Code in this repository is linted with pylint (from the Official python extension) and formatted with Black. You can run it with `black src/` to format your code.
 
+## Known issues and limitations
+
+- Custom fronts are not supported yet.
+- If the first fronter in the list does not have an avatar the application will use an empty avatar. 
+
 ## License
 
 Simply-Present is licensed under the MIT license. The full license text is included in the [LICENSE](LICENSE) file in this repository. Tldr legal have a [great summary](https://www.tldrlegal.com/license/mit-license) of the license if you're interested.
