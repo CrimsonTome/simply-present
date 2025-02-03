@@ -41,7 +41,6 @@ It is recommended to run your changes through a linter such as pylint. Code in t
 
 ## Known issues and limitations
 
-- Custom fronts are not supported yet.
 - If the first fronter in the list does not have an avatar the application will use an empty avatar. 
 
 ## License

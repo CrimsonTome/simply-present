@@ -30,12 +30,8 @@ def get_data() -> tuple[list[tuple[str, str]], str]:
     )
     response_content: str = response.text
     data = json.loads(response_content)
-    # Stripping out anything that isn't a member ID such as [] and ''
-    # fronters = " ".join([item["content"]["member"] for item in data])
-    # ^ not anymore, it's now an array of member IDs
 
     # get the fronter ids in an array
-    # fronter_list = [item["content"]["member"] for item in data]
     fronter_list = [
         item["content"]["member"]
         for item in data

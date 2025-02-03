@@ -5,7 +5,7 @@
 
 ### Added
 
-- ✨ Add custom front support [[75b49ce](https://github.com/CrimsonTome/simply-present/commit/75b49ce86d3cddc43bb328ddb95f13c0d1aae2fd)]
+- ✨ Add custom front support [[52ac278](https://github.com/CrimsonTome/simply-present/commit/52ac278a904e057349d630669d28a90d6cc6b507)]
 
 ### Changed
 
@@ -13,6 +13,7 @@
 
 ### Miscellaneous
 
+- 📝 Remove comment on custom fronters not being supported [[49bd625](https://github.com/CrimsonTome/simply-present/commit/49bd6250382c196cced9aedd4abe70f038a1d9a3)]
 -  Some more formatting [[f222b7c](https://github.com/CrimsonTome/simply-present/commit/f222b7cb484ad9ef4895d9b21effc591927ea867)]
 -  Comment on issues [[a867a03](https://github.com/CrimsonTome/simply-present/commit/a867a036fcf25b335a30975dae08d5f1a026ce45)]
 -  Finally, multiple fronter support There is still some work to be done to clean up the code. There is definitely room for improvement. [[d29ecea](https://github.com/CrimsonTome/simply-present/commit/d29eceaacf2c858f114cbdc8f627e9064f2d2c7f)]
