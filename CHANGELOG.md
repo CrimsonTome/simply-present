@@ -1,7 +1,15 @@
 # Changelog
 
 <a name="1.0.0"></a>
-## 1.0.0 (2025-01-20)
+## 1.0.0 (2025-02-03)
+
+### Added
+
+- ✨ Add custom front support [[75b49ce](https://github.com/CrimsonTome/simply-present/commit/75b49ce86d3cddc43bb328ddb95f13c0d1aae2fd)]
+
+### Changed
+
+- 🔧 Add config for gitmoji changelog and create log [[70452a3](https://github.com/CrimsonTome/simply-present/commit/70452a3857d87767e36d72cfdc431465f8f6aa56)]
 
 ### Miscellaneous
 

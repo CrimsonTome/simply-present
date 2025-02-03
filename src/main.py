@@ -7,6 +7,9 @@ import requests  # Will be needed later for SP requests
 
 SIMPLY_PLURAL_BASE_URL = "https://api.apparyllis.com/v1"
 
+# Set to True to enable DEBUG printing
+DEBUG = False
+
 # Load secrets from file, this includes your Simply PLugin API key
 secretsPath = Path("secrets.json")
 with secretsPath.open(encoding="utf-8") as file:
@@ -27,19 +30,31 @@ def get_data() -> tuple[list[tuple[str, str]], str]:
     )
     response_content: str = response.text
     data = json.loads(response_content)
-    # Get current fronters, this probably breaks if there are multiple fronters
     # Stripping out anything that isn't a member ID such as [] and ''
     # fronters = " ".join([item["content"]["member"] for item in data])
     # ^ not anymore, it's now an array of member IDs
 
     # get the fronter ids in an array
-    fronter_list = [item["content"]["member"] for item in data]
-    # print(fronter_list)
+    # fronter_list = [item["content"]["member"] for item in data]
+    fronter_list = [
+        item["content"]["member"]
+        for item in data
+        if not item["content"].get("custom", False)
+    ]
+    custom_fronter_list = [
+        item["content"]["member"]
+        for item in data
+        if item["content"].get("custom", False)
+    ]
+    if DEBUG:
+        print(fronter_list)
+        print(custom_fronter_list)
 
     # Get uid (system ID)
     # only need to get for first member as it's the same for all members
     uid = data[0]["content"]["uid"]
-    # print(uid)
+    if DEBUG:
+        print(uid)
 
     fronters_concat = []
 
@@ -53,14 +68,33 @@ def get_data() -> tuple[list[tuple[str, str]], str]:
             data=payload,
             timeout=10,
         )
-        # print(response)
+        if DEBUG:
+            print(response)
         response_content: str = response.text
         data = json.loads(response_content)
         name: str = data["content"]["name"]
         avatar_url: str = data["content"]["avatarUrl"]
         fronters_concat.append((name, avatar_url))
 
-    # Get the avatar URL of the fronter
+    for i in range(len(custom_fronter_list)):
+        response = requests.request(
+            "GET",
+            SIMPLY_PLURAL_BASE_URL
+            + "/customfront/"
+            + uid
+            + "/"
+            + custom_fronter_list[i],
+            headers=headers,
+            data=payload,
+            timeout=10,
+        )
+        response_content = response.text
+        custom_front_data = json.loads(response_content)
+        name = custom_front_data["content"]["name"]
+        avatar_url = custom_front_data["content"]["avatarUrl"]
+        fronters_concat.append((name, avatar_url))
+
+    # Get the avatar URL of the first fronter
     avatar_url: str = fronters_concat[0][1]
 
     return fronters_concat, avatar_url
