@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="next"></a>
+## next
+
+### Miscellaneous
+
+- 📝 Update docs for getting your API token [[7df78cb](https://github.com/CrimsonTome/simply-present/commit/7df78cb080961887b60edab6e271319d26e0bf00)]
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2025-02-03)
 

@@ -5,6 +5,7 @@
 - [Simply-Present](#Simply-Present)
   - [System requirements](#system-requirements)
   - [Getting Started](#getting-started)
+  - [Known issues and limitations](#known-issues-and-limitations)
   - [License](#license)
 
 
@@ -20,6 +21,13 @@ Clone the repository and navigate to the project directory.
 ```
 git clone https://github.com/CrimsonTome/simply-present
 cd simply-present
+```
+In order to get dara from Simply Plural you will need to rename the `secrets.example.json` file to `secrets.json` and add your Simply Plural API key. You can find your API key by going into settings -> Account -> Tokens -> Add Token. Give it read access and copy the token into the file. 
+
+```json
+{
+    "SimplyPluralAPIKey": "your_api_key_here"
+}
 ```
 Virtual environments are recommended to keep dependencies isolated from other projects and in some cases to keep them from breaking your system system packages. You can create a virtual environment and install the dependencies with the following commands:
 
