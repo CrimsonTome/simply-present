@@ -9,6 +9,10 @@
   - [License](#license)
 
 
+## Notice
+
+Parts of this repo have been moved into my [SimplyPluralutils](https://git.crimsontome.com/crimsontome/SimplyPluralUtils) project, in an attempt to clean up the code and allow it to be used elsewhere.
+
 ## System requirements
 
 - Python 3.8 or higher is required to run Simply-Present (tested with 3.12). You can check your Python version by running `python --version` in your terminal. You can install it using your package manager or from the [Python website](https://www.python.org/downloads/). 
